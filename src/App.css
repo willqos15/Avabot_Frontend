@@ -1,0 +1,35 @@
+*{
+  font-family: "Sour Gummy", sans-serif;;
+}
+
+#root {
+
+  margin: 0 auto;
+
+}
+
+#root{
+height: 100vh;
+display: flex;
+justify-content: center;
+background-color: none;
+
+}
+
+body{background: url('./assets/BGfic.png');}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+

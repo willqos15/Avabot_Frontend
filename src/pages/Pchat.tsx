@@ -82,6 +82,7 @@ export default function Pchat() {
 
 
     async function enviar(dados: Dados) {
+            if(load) return
         try {
             reset()
             setLoad(true)
@@ -204,7 +205,7 @@ export default function Pchat() {
                         {...register("mensagem", { required: true })} />
 
                     <button type='submit'
-                        className=' text-amber-800 pl-4 py-1 my-5 text-xl hover:text-amber-400 transition-all duration-500 rounded-xl'>
+                        className= {load? "text-amber-200 pl-4 py-1 my-5 text-xl hover:text-amber-200 transition-all duration-500 rounded-xl": "text-amber-800 pl-4 py-1 my-5 text-xl hover:text-amber-600 transition-all duration-500 rounded-xl cursor-pointer"}>
                         <IoSend />
                     </button>
 

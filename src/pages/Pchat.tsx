@@ -174,11 +174,11 @@ export default function Pchat() {
 
 
 
-            <form onSubmit={handleSubmit(enviar)}>
+            <form autoComplete='off' onSubmit={handleSubmit(enviar)}>
 
                 <div className='flex justify-center align-middle'>
 
-                    <input type='text' autocomplete="off" className='bg-white py-1 px-2 my-3 font-normal w-full rounded-2xl outline-none resize-none text-2xl'
+                    <input autoComplete='off' type='text'  className='bg-white py-1 px-2 my-3 font-normal w-full rounded-2xl outline-none resize-none text-2xl'
                         
 
                         {...register("mensagem", { required: true })} />

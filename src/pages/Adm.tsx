@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { FaHome } from "react-icons/fa"
 import {useNavigate} from 'react-router-dom'
+import digitando from '../assets/square-loading.json'
+import Lottie from "lottie-react"
 
 interface Tipoitem {
     id: string
@@ -26,20 +28,21 @@ export default function Adm() {
 
     const [lista, setLista] = useState<Tipoitem[]>([])
     const [modo,setModo] = useState<string>("boa")
+    const [load,setLoad] = useState<boolean>(true)
 
 
     async function puxadb() {
+        setLoad(true)
 
         try {
             const dados = await axios.get
             ('https://avabot-backend-z5a5.onrender.com/busca')
 
-            console.log(dados.data)
             setLista(dados.data.msg)
-            console.log('execut')
+            setLoad(false)
         }
         catch(err) {
-            console.log('erro', err)
+            setLoad(false)
         }
     }
 
@@ -54,30 +57,40 @@ export default function Adm() {
 
     return (<>
 
-<div className='bg-amber-200 w-full m-0 p-0 fixed top-0 flex  items-center justify-between h-20 px-10'>
+<div className='bg-amber-200 w-full m-0 p-0 fixed top-0 flex  items-center justify-center lg:justify-between h-20 px-10'>
 
     
-    <div className="flex">
-        <h1 className="text-4xl font-bold px-10 py-0 m-0 text-amber-800">PAINEL ADMINISTRATIVO</h1> 
+    <div className="flex items-center">
+        <h1 className="text-4xl font-bold px-10 py-0 m-0 text-amber-800 
+        lg:block hidden
+        ">PAINEL ADMINISTRATIVO</h1> 
     </div>
-    <div className="flex">
+    <div className="flex items-center ">
     <FaHome onClick={gotohome}
-    className="text-6xl mx-5 m-0 text-amber-800"/>
+    className="sm:text-6xl text-5xl sm:mx-5 mx-1 m-0  text-amber-700 cursor-pointer hover:text-amber-900 transition-all duration-300"/>
     <button
     onClick={()=>setModo("boa")}
-    className='bg-green-600 hover:bg-green-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-3xl mx-2'>Elogios</button>
+    className='bg-green-600 hover:bg-green-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md sm:text-3xl text-xl mx-2 cursor-pointer'>Elogios</button>
     <button
     onClick={()=>setModo("ruim")}
-    className='bg-red-600 hover:bg-red-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-3xl mx-2'>Reclamações</button>
+    className='bg-red-600 hover:bg-red-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md sm:text-3xl text-xl mx-2 cursor-pointer'>Críticas</button>
     </div>
     
 
     </div>
 
-    
-    <div className="grid grid-cols-3 gap-3 my-32 max-w-6xl h-fit">
+    {load &&
+    <Lottie
+                className='h-40 color-amber-600 mt-32'
+                animationData={digitando} loop={true}></Lottie>}
 
-    {
+    <div className="grid 
+    xl:grid-cols-3
+    lg:grid-cols-2
+    md:grid-cols-1
+    gap-3 my-32 max-w-6xl h-fit">
+
+    {!load &&
     lista.filter(chat => chat.xp === modo).map(chat => 
         
         (
@@ -87,7 +100,7 @@ export default function Adm() {
                 :
             'bg-red-600 flex flex-col rounded-2xl max-w-lg px-5 my-5 h-fit'
                 }> 
-            <p className="pt-4 text-3xl font-bold text-white"> ID: {chat.id} - DATA: {new Date(chat.criado).toLocaleDateString("pt-BR")}    </p> 
+            <p className="pt-4 text-2xl font-bold text-white"> ID: {chat.id} - DATA: {new Date(chat.criado).toLocaleDateString("pt-BR")}    </p> 
             <div className='bg-amber-100 w-full overflow-y-auto h-96 px-3 my-5 rounded-2xl' >
 
             

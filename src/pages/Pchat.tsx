@@ -6,7 +6,8 @@ import { v4 as uuidv4 } from 'uuid'
 import logo from '../assets/Logofic.png'
 import { FaGear } from "react-icons/fa6";
 import {useNavigate} from 'react-router-dom'
-
+import Lottie from 'lottie-react';
+import digitando from '../assets/square-loading.json'
 
 
 type Dados = {
@@ -25,6 +26,8 @@ export default function Pchat() {
     const navigate = useNavigate()
 
     const  [xpuser, setXpuser] = useState< "boa" | "ruim">()
+    const [load, setLoad] = useState<boolean>(false)
+    const [showload,setShowLoad] = useState<boolean>(false)
 
 
 
@@ -76,9 +79,15 @@ export default function Pchat() {
         , [historico])
 
 
+
+
     async function enviar(dados: Dados) {
         try {
             reset()
+            setLoad(true)
+            console.log(load)
+            setShowLoad(true)
+            
             setHistorico(ant => [...ant, { quem: "você", mensagem: dados.mensagem }])
 
             const chatid = localStorage.getItem("id")
@@ -92,14 +101,15 @@ export default function Pchat() {
                         xp: xpuser
                     })
                 console.log('id: ', chatid, 'mensagem: ',dados.mensagem, 'xp: ', xpuser)
-            console.log(resposta.data.resposta)
             setHistorico(ant => [...ant, { quem: "IA", mensagem: resposta.data.resposta }])
-            
-
-
+            setLoad(false)
+            setShowLoad(false)
+        
 
         }
-        catch (err) { console.log('erro ao cadastrar', err) }
+        catch { setLoad(false) 
+            setShowLoad(false)
+        }
     }
 
     const { register, handleSubmit, reset } = useForm<Dados>({ mode: "onChange" })
@@ -110,12 +120,12 @@ export default function Pchat() {
 
     return (
 
-        <div className='bg-amber-200 text-amber-900 flex flex-col justify-self-center rounded-2xl max-w-lg px-5 
-         my-auto h-[90vh]'
+        <div className='bg-amber-200 text-amber-900 flex flex-col justify-self-center rounded-2xl md:max-w-lg px-5 my-auto h-[90vh]
+        sm:max-w-full'
         >
             <div className='flex items-center justify-center p-2.5'>
             <img
-                className='w-9/12 m-0 p-0'
+                className='w-9/12 mt-3 p-0'
                 src={logo} />
                 
                 <FaGear
@@ -124,18 +134,18 @@ export default function Pchat() {
                 
                 </div>
 
+
+
             <div className= {xp ? 
             'bg-amber-100 w-full overflow-y-auto p-3 mt-5 rounded-2xl h-11/12':
-            'bg-amber-100 w-full overflow-y-auto p-3 rounded-2xl h-11/12 flex flex-col align-middle justify-center'
-        
-        }
+            'bg-amber-100 w-full overflow-y-auto p-3 rounded-2xl h-11/12 flex flex-col align-middle justify-center'}
                 ref={chatRef}>
                 
                 
                 <div 
                 className= {!xp?  "flex flex-col justify-center align-middle gap-2 bg-white rounded-md p-5 px-2": "hidden"} >
                    
-                    <p className='text-3xl pb-5'>Como foi sua experiência com nossos serviços?</p>
+                    <p className='text-3xl pb-5 text-center'>Como foi sua experiência com nossos serviços?</p>
                     <div className='flex'>
 
                         
@@ -166,6 +176,16 @@ export default function Pchat() {
                             </div>
                         </div>
                 )
+
+                }
+
+                
+                
+                {showload &&
+                
+                <Lottie
+                className='h-40 color-amber-600'
+                animationData={digitando} loop={true}></Lottie>
 
                 }
                 

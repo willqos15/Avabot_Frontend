@@ -111,16 +111,16 @@ export default function Pchat() {
     return (
 
         <div className='bg-amber-200 text-amber-900 flex flex-col justify-self-center rounded-2xl max-w-lg px-5 
-         my-auto h-11/12'
+         my-auto h-[90vh]'
         >
-            <div className='flex align-middle justify-center'>
+            <div className='flex items-center justify-center p-2.5'>
             <img
-                className='w-9/12 mx-auto p-0'
+                className='w-9/12 m-0 p-0'
                 src={logo} />
                 
                 <FaGear
                 onClick={gotoadmin}
-                 className='text-6xl flex align-middle h-full text-amber-700 cursor-pointer'/>
+                 className='text-6xl flex align-middle h-full text-amber-700 cursor-pointer hover:text-amber-900 transition-all 500 duration-300'/>
                 
                 </div>
 
@@ -140,10 +140,10 @@ export default function Pchat() {
 
                         
                 <button 
-                onClick={bomxp} className='bg-green-400 hover:bg-green-600 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-4xl'>Boa</button>
+                onClick={bomxp} className='bg-green-600 hover:bg-green-800 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-4xl'>Boa</button>
                 <button
                 onClick={ruimxp}
-                 className='bg-red-400 hover:bg-red-600 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-4xl'>Ruim</button>
+                 className='bg-red-600 hover:bg-red-800 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-4xl'>Ruim</button>
                 </div>
                 </div>
 
@@ -178,7 +178,7 @@ export default function Pchat() {
 
                 <div className='flex justify-center align-middle'>
 
-                    <input type='text' className='bg-white py-1 px-2 my-3 font-normal w-full rounded-2xl outline-none resize-none'
+                    <input type='text' className='bg-white py-1 px-2 my-3 font-normal w-full rounded-2xl outline-none resize-none text-2xl'
                         
 
                         {...register("mensagem", { required: true })} />

@@ -19,7 +19,7 @@ const Poup: React.FC<propriedades> =({load,titulo,op1,op2,f1,f2})=>{
 
     <div className="
     mt-32 bg-amber-200 h-40 py-2 rounded-xl flex flex-col items-center justify-center px-7">
-            <h2 className="font-bold text-4xl text-amber-800 mb-3">
+            <h2 className="font-bold text-4xl text-amber-800 mb-3 text-center">
                 {load? "Carregando...": titulo}
             </h2>
 

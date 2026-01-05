@@ -108,15 +108,18 @@ export default function Adm() {
         
 
         {load &&
+        <div className=" w-dvw h-fit mx-auto my-32">
             <Lottie
                 className='h-40 color-amber-600 mt-32'
-                animationData={digitando} loop={true}></Lottie>}
+                animationData={digitando} loop={true}></Lottie>
+                </div>}
 
         <div className="grid 
     xl:grid-cols-3
     lg:grid-cols-2
     md:grid-cols-1
-    gap-3 my-32 max-w-6xl h-fit">
+    gap-4 my-32 lg:max-w-6xl max-w-full lg:w-6xl w-full h-fit py-0
+    mx-auto px-0 place-items-center">
 
             {!load &&
                 lista.filter(chat => chat.xp === modo).map((chat: Tipoitem) =>
@@ -124,24 +127,25 @@ export default function Adm() {
                 (
 
 
-                    <div className={chat.xp === "boa" ? 'bg-green-600 flex flex-col justify-center rounded-2xl max-w-lg px-5 my-5 h-fit'
+                    <div className={chat.xp === "boa" ? 'bg-green-600 flex flex-col justify-center md:rounded-2xl md:max-w-lg max-w-svw sm:px-5 px-0 my-0 mx-0 h-fit rounded-none'
+                        
                         :
-                        'bg-red-600 flex flex-col rounded-2xl max-w-lg px-5 my-5 h-fit'
+                        'bg-red-600 flex flex-col justify-center md:rounded-2xl md:max-w-lg max-w-svw sm:px-5 px-0 my-0 mx-0 h-fit rounded-none'
                     }>
 
                         <div className="flex items-center justify-between">
-                            <p className="pt-4 text-2xl font-bold text-white"> ID: {chat.id} - DATA: {new Date(chat.criado).toLocaleDateString("pt-BR")}    </p>
+                            <p className="pt-4 text-2xl font-bold text-white sm:px-0 px-4"> ID: {chat.id} - DATA: {new Date(chat.criado).toLocaleDateString("pt-BR")}    </p>
 
                             <TiDelete
                                 onClick={() => { 
                                     setShowDel(true)
                                     setDelId(chat.id) }}
                                 className="text-red-500 
-            hover:text-red-700
-            text-4xl mt-4 m-0 items-center bg-white rounded-full"/>
+            hover:text-red-700 sm:mx-0 mx-5
+            text-4xl mt-4 items-center bg-white rounded-full"/>
                         </div>
 
-                        <div className='bg-amber-100 w-full overflow-y-auto h-96 px-3 my-5 rounded-2xl' >
+                        <div className='bg-amber-100 w-full overflow-y-auto h-96 px-3 my-5 sm:rounded-2xl rounded-none' >
 
 
 

@@ -2,17 +2,11 @@
   font-family: "Sour Gummy", sans-serif;;
 }
 
-#root {
 
-  margin: 0 auto;
-
-}
 
 #root{
 min-height: 100vh;
-display: flex;
-justify-content: center;
-background-color: none;
+background-color: transparent;
 
 }
 

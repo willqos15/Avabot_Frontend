@@ -120,7 +120,8 @@ export default function Pchat() {
     }
 
     return (
-
+        <div className='h-dvh flex items-center justify-center'>
+        
         <div className='bg-amber-200 text-amber-900 flex flex-col justify-self-center rounded-2xl md:max-w-lg px-5 my-auto h-[90vh]
         sm:max-w-full'
         >
@@ -214,6 +215,7 @@ export default function Pchat() {
 
             </form>
 
+        </div>
         </div>
     )
 

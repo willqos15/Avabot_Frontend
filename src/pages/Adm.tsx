@@ -70,14 +70,18 @@ export default function Adm() {
            setTimeout(()=>{
             if (modo==="")setModo("boa")}
             ,100)
+            
+            
            
 
         }
         , [])
 
     useEffect(() => {
-        // setQtdBoa(lista.filter(chat => chat.xp === "boa").length)
-        // setQtdRuim(lista.filter(chat => chat.xp === "ruim").length)
+
+        
+        setQtdBoa(lista.filter(chat => chat.xp === "boa").length)
+        setQtdRuim(lista.filter(chat => chat.xp === "ruim").length)
         setTimeout(()=> console.log('boa',qtdboa,'ruim',qtdruim),500)
     }
 
@@ -131,7 +135,7 @@ export default function Adm() {
                 <button
                     onClick={() => {
                         setModo("boa")
-                        setQtdBoa(lista.filter(chat => chat.xp === "boa").length)
+                        // setQtdBoa(lista.filter(chat => chat.xp === "boa").length)
                         window.scrollTo({ top: 0, behavior: 'smooth' })
 
 
@@ -143,7 +147,7 @@ export default function Adm() {
                 <button
                     onClick={() => {
                         setModo("ruim")
-                        setQtdRuim(lista.filter(chat => chat.xp === "ruim").length)
+                        // setQtdRuim(lista.filter(chat => chat.xp === "ruim").length)
                         window.scrollTo({ top: 0, behavior: 'smooth' })
                     }}
                     className='bg-red-600 hover:bg-red-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md sm:text-3xl text-xl mx-2 cursor-pointer'>Críticas</button>

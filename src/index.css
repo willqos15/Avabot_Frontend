@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css"; */
+
 *,
 *::before,
 *::after {

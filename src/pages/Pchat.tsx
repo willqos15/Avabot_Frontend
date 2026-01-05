@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form'
 import axios from 'axios'
 import { IoSend } from "react-icons/io5";
 import { useRef, useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid'
 import logo from '../assets/Logofic.png'
 import { FaGear } from "react-icons/fa6";
 import {useNavigate} from 'react-router-dom'
@@ -10,6 +9,8 @@ import Lottie from 'lottie-react';
 import digitando from '../assets/square-loading.json'
 import { ImSad2 } from "react-icons/im";
 import { ImHappy2 } from "react-icons/im";
+
+import { customAlphabet } from 'nanoid'
 
 
 
@@ -28,7 +29,7 @@ interface HistoricoItem {
 export default function Pchat() {
 
     const navigate = useNavigate()
-    
+    const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-', 6)
 
     const  [xpuser, setXpuser] = useState< "boa" | "ruim">()
     const [load, setLoad] = useState<boolean>(false)
@@ -57,9 +58,16 @@ export default function Pchat() {
     ])
 
     useEffect(() => {
-        if (!localStorage.getItem("id")) {
-            
-            const idchat = uuidv4()
+
+        const verificaid = localStorage.getItem('id')
+        if (verificaid && verificaid.length>6){
+             localStorage.removeItem('id')
+             const idchat = nanoid()
+            localStorage.setItem("id", idchat)
+        }
+
+        if (!localStorage.getItem("id")) { 
+            const idchat = nanoid()
             localStorage.setItem("id", idchat)
         }
     }, [])

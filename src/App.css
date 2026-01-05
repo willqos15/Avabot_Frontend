@@ -1,3 +1,12 @@
+/* index.css */
+/* @import "tailwindcss/preflight"; /* base reset */
+
+/* @import "tailwindcss/base.css";
+@import "tailwindcss/components.css";
+@import "tailwindcss/utilities.css"; */ */
+
+
+
 *{
   font-family: "Sour Gummy", sans-serif;;
 }

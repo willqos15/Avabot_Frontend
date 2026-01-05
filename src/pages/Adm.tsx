@@ -172,7 +172,7 @@ export default function Adm() {
             } */}
 
 
-        {/* {!load && !erro && modo === "boa" && qtdboa < 1 &&
+        {/*  {!load && !erro && modo === "boa" && qtdboa < 1 &&
             <div className="fixed top-30 w-full text-center text-2xl">
                 <p className="bg-amber-50 shadow-xl text-amber-800 rounded-2xl w-fit mx-auto px-5">
                     Nenhum elogio encontrado...</p>

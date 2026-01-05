@@ -14,7 +14,7 @@ interface propriedades{
 
 const Poup: React.FC<propriedades> =({load,titulo,op1,op2,f1,f2})=>{
     return(<>
-    <div className="fixed inset-0 flex items-center justify-center z-10"
+    <div className="fixed inset-0 flex items-center justify-center z-20"
     style={{backgroundColor: 'rgba(0,0,0,0.5)'}}>
 
     <div className="

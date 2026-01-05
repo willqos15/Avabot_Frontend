@@ -1,73 +1,205 @@
-# React + TypeScript + Vite
+# Frontend - Avabot: Pet Feliz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto de uma aplicação de chatbot feita com **React, TypeScript e Tailwind** para coleta de feedback de clientes da clínica fictícia Pet Feliz, com interface web e painel administrativo, utilizando Node.js.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Backend
 
-## React Compiler
+Este repositório contém apenas o **frontend** da aplicação.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+O código do **backend (Node, API, ChatBot e Banco de dados MySQL)** está disponível em um repositório separado no GitHub:
 
-## Expanding the ESLint configuration
+**Backend – Avabot: Pet Feliz**
+(https://github.com/willqos15/Avabot_Backend)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Screenshots
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+
+![Tela Inicial](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_221743_xnumdq.png)
+
+![Tela do Chat](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_222012_gfupr4.png)
+
+![Painel de Elogios](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_221903_vgbk19.png)
+
+![Painel Critica](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_221917_ahoq6l.png)
+
+## Funcionalidades
+
+- **Chat Interativo (Pchat)**
+  - Recebe feedback do usuário sobre a experiência: `Boa` ou `Ruim`.
+  - Exibe o histórico de mensagens entre o usuário e a IA.
+  - Atualiza dinamicamente a conversa com novas mensagens.
+  - Mostra animação de carregamento enquanto a IA responde.
+  - Armazena um ID único de cada conversa no `localStorage`.
+
+- **Painel Administrativo (Adm)**
+  - Visualiza todas as conversas registradas.
+  - Filtra conversas por avaliação (`Elogios` ou `Críticas`).
+  - Mostra detalhes de cada conversa, incluindo ID e data.
+  - Deleta conversas com confirmação através de popup.
+  - Indicação de carregamento enquanto os dados são carregados.
+  - Navegação de volta para a página inicial.
+
+
+---
+
+## Tecnologias Utilizadas
+
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Gerenciamento de Formulários:** react-hook-form
+- **Roteamento:** react-router-dom
+- **Animações:** Lottie
+- **Ícones:** react-icons
+- **Backend API:** Axios (consumindo endpoints externos)
+- **Identificação de Conversa:** uuid
+
+
+---
+
+## Estrutura de Componentes
+
+- **Adm.tsx**
+  - Componente principal do painel administrativo.
+  - Controla estados de carregamento, modo (boa/ruim), exibição de popup e lista de conversas.
+  - Funções:
+    - `puxadb()`: busca conversas da API.
+    - `deletarbd(delid)`: deleta uma conversa pelo ID.
+    - `gotohome()`: navega para a página inicial.
+  - Usa o componente `Poup` para confirmação de exclusão.
+
+- **Pchat.tsx**
+  - Componente de chat interativo para o usuário.
+  - Controla estados de feedback, verifica se o usuário já respondeu o (`xpuser`) inicial, carregamento, histórico de mensagens e exibição do chat.
+  - Funções:
+    - `bomxp() / ruimxp()`: define experiência do usuário.
+    - `enviar(dados)`: envia mensagem para a API e recebe resposta da IA.
+    - `gotoadmin()`: navega para o painel administrativo.
+  - Scroll automático do chat usando `useRef`.
+
+---
+
+## Rotas
+
+- `/` → Página principal do chat (`Pchat.tsx`)
+- `/admin` → Painel administrativo (`Adm.tsx`)
+
+---
+
+## Estrutura de Dados
+
+**HistoricoItem** (para exibir no chat do usuário):
+```ts
+interface HistoricoItem {
+  quem: string; // "IA" ou "você"
+  mensagem: string;
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Tipoitem** (conversas do painel administrativo):
+```ts
+interface Tipoitem {
+  id: string;
+  conversa: mensagem[];
+  criado: string;
+  xp: string; // "boa" ou "ruim"
 ```
+
+**mensagem** (cada mensagem no histórico):
+```ts
+interface mensagem {
+  hora: number;
+  role: string; // "user" ou "IA"
+  content: string;
+}
+```
+
+---
+
+## Instalação e Execução:
+
+# 1- Clone o repositório
+`git clone https://github.com/willqos15/Avabot_Frontend`
+
+# 2- Entre na pasta do projeto
+`cd Avabot_Frontend`
+
+# 3- Instale as dependências
+`npm install`
+
+`npm install react react-dom react-router-dom axios react-hook-form uuid lottie-react react-icons tailwindcss postcss autoprefixer`
+
+`npm install --save-dev typescript @types/react @types/react-dom @types/react-router-dom @types/react-icons`
+
+`npx tailwindcss init -p`
+
+`npx tailwindcss init -p`
+
+
+# 4- Configure o Tailwind
+no seu projeto React adicionando os paths no tailwind.config.js e importando o CSS no index.css.
+
+# 5- Execute o projeto
+`npm run dev`
+
+# O frontend estará disponível em:
+`http://localhost:3000`
+
+---
+
+## Estrutura de Projeto
+
+- `src/assets` → imagens, ícones e animações  
+- `src/components` → componentes React reutilizáveis  
+- `src/pages` → páginas principais do sistema (Adm e Pchat)
+
+
+```
+Avabot_Frontend/
+├─ .gitignore
+├─ eslint.config.js
+├─ estrutura.txt
+├─ index.html
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ tsconfig.app.json
+├─ tsconfig.json
+├─ tsconfig.node.json
+├─ vercel.json
+├─ vite.config.ts
+├─ node_modules/
+│ └─ .package-lock.json
+├─ public/
+│ ├─ ico.png
+│ └─ vite.svg
+└─ src/
+├─ App.css
+├─ App.tsx
+├─ index.css
+├─ main.tsx
+├─ page/
+├─ assets/
+│ ├─ BGfic.png
+│ ├─ load.gif
+│ ├─ Logofic.png
+│ ├─ react.svg
+│ └─ square-loading.json
+├─ components/
+│ └─ poup.tsx
+└─ pages/
+├─ Adm.tsx
+└─ Pchat.tsx
+```
+
+---
+
+## 👨‍💻 Sobre o autor
+
+Desenvolvido por William Queiroz
+🔗 Portfólio: (https://queirozdeveloper.vercel.app/)
+
+

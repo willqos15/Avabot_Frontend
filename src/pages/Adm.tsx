@@ -8,6 +8,7 @@ import { TiDelete } from "react-icons/ti"
 import Poup from "../components/poup"
 
 
+
 interface Tipoitem {
     id: string
     conversa: mensagem[]
@@ -41,7 +42,7 @@ export default function Adm() {
 
         try {
             const dados = await axios.get
-                ('https://avabot-backend-z5a5.onrender.com/busca')
+                (`${import.meta.env.VITE_API}/busca`)
 
             setLista(dados.data.msg)
             setLoad(false)
@@ -80,10 +81,9 @@ export default function Adm() {
 
     return (<>
 
-    {showdel && 
-        <Poup load={loaddel}titulo="Deseja apagar?" op1="SIM" op2="NÃO" f1={()=>deletarbd(delid)} f2={()=>setShowDel(false)} /> }
+    
 
-        <div className='bg-amber-200 w-full m-0 p-0 fixed top-0 flex  items-center justify-center lg:justify-between h-20 px-10'>
+        <div className='bg-amber-200 w-full m-0 p-0 top-0 flex  items-center justify-center lg:justify-between h-20 px-10 fixed z-10'>
 
 
             <div className="flex items-center">
@@ -95,22 +95,33 @@ export default function Adm() {
                 <FaHome onClick={gotohome}
                     className="sm:text-6xl text-5xl sm:mx-5 mx-1 m-0  text-amber-700 cursor-pointer hover:text-amber-900 transition-all duration-300" />
                 <button
-                    onClick={() => setModo("boa")}
+                    onClick={() => {setModo("boa")
+
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }
+                        
+                    }
+                    
                     className='bg-green-600 hover:bg-green-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md sm:text-3xl text-xl mx-2 cursor-pointer'>Elogios</button>
                 <button
-                    onClick={() => setModo("ruim")}
+                    onClick={() => {setModo("ruim")
+                         window.scrollTo({ top: 0, behavior: 'smooth' })
+                    }}
                     className='bg-red-600 hover:bg-red-700 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md sm:text-3xl text-xl mx-2 cursor-pointer'>Críticas</button>
             </div>
 
 
         </div>
 
+        {showdel && 
+        <Poup load={loaddel}titulo="Deseja apagar?" op1="SIM" op2="NÃO" f1={()=>deletarbd(delid)} f2={()=>setShowDel(false)} /> }
+
         
 
         {load &&
-        <div className=" w-dvw h-fit mx-auto my-32">
+        <div className="fixed top-20 w-dvw mx-auto">
             <Lottie
-                className='h-40 color-amber-600 mt-32'
+                className='h-40 color-amber-600'
                 animationData={digitando} loop={true}></Lottie>
                 </div>}
 

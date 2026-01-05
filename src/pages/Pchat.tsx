@@ -8,6 +8,10 @@ import { FaGear } from "react-icons/fa6";
 import {useNavigate} from 'react-router-dom'
 import Lottie from 'lottie-react';
 import digitando from '../assets/square-loading.json'
+import { ImSad2 } from "react-icons/im";
+import { ImHappy2 } from "react-icons/im";
+
+
 
 
 type Dados = {
@@ -24,6 +28,7 @@ interface HistoricoItem {
 export default function Pchat() {
 
     const navigate = useNavigate()
+    
 
     const  [xpuser, setXpuser] = useState< "boa" | "ruim">()
     const [load, setLoad] = useState<boolean>(false)
@@ -53,6 +58,7 @@ export default function Pchat() {
 
     useEffect(() => {
         if (!localStorage.getItem("id")) {
+            
             const idchat = uuidv4()
             localStorage.setItem("id", idchat)
         }
@@ -93,7 +99,7 @@ export default function Pchat() {
 
             const chatid = localStorage.getItem("id")
             const resposta = await axios.post
-                ('https://avabot-backend-z5a5.onrender.com/chat',
+                (`${import.meta.env.VITE_API}/chat`,
                 //('http://localhost:3000/chat',
 
                     {
@@ -148,14 +154,20 @@ export default function Pchat() {
                 className= {!xp?  "flex flex-col justify-center align-middle gap-2 bg-white rounded-md p-5 px-2": "hidden"} >
                    
                     <p className='text-3xl pb-5 text-center'>Como foi sua experiência com nossos serviços?</p>
-                    <div className='flex'>
+                    <div className='flex gap-10 justify-center'>
 
                         
                 <button 
-                onClick={bomxp} className='bg-green-600 hover:bg-green-800 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-4xl'>Boa</button>
+                onClick={bomxp} className='bg-green-600 hover:bg-green-800 transition-all duration-300 w-fit px-5 py-2 text-white font-bold rounded-md text-6xl'>
+
+                    <ImHappy2/>
+                </button>
                 <button
                 onClick={ruimxp}
-                 className='bg-red-600 hover:bg-red-800 transition-all duration-300 w-fit m-auto px-3 py-2 text-white font-bold rounded-md text-4xl'>Ruim</button>
+                 className='bg-red-600 hover:bg-red-800 transition-all duration-300 w-fit px-5 py-2 text-white font-bold rounded-md text-6xl'>
+
+                    <ImSad2/>
+                 </button>
                 </div>
                 </div>
 

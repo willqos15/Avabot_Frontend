@@ -122,9 +122,8 @@ export default function Pchat() {
     return (
         <div className='h-dvh flex items-center justify-center'>
         
-        <div className='bg-amber-200 text-amber-900 flex flex-col justify-self-center rounded-2xl md:max-w-lg px-5 my-auto h-[90vh]
-        sm:max-w-full'
-        >
+        <div className='bg-amber-200 text-amber-900 flex flex-col justify-self-center rounded-2xl md:max-w-lg px-5 my-auto sm:h-[90vh] max-h-[90vh]
+        sm:max-w-full'>
             <div className='flex items-center justify-center p-2.5'>
             <img
                 className='w-9/12 mt-3 p-0'

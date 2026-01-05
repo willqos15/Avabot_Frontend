@@ -241,14 +241,10 @@ sm:col-span-1
 </div>}
 
 
-            {!load &&
+            {!load && Array.isArray(lista) &&
                 lista.filter(chat => chat.xp === modo).map((chat: Tipoitem) =>
 
-
-
                 (
-
-
                     <div className={chat.xp === "boa" ? 'bg-green-600 flex flex-col justify-center sm:rounded-2xl  xl:w-96 lg:w-80 md:w-80 w-full sm:px-5 px-2 my-0 mx-0 h-fit rounded-none'
 
                         :

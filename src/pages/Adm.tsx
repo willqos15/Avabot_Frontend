@@ -79,7 +79,9 @@ export default function Adm() {
 
     useEffect(() => {
 
-        
+         if (!Array.isArray(lista)) return
+
+      
         setQtdBoa(lista.filter(chat => chat.xp === "boa").length)
         setQtdRuim(lista.filter(chat => chat.xp === "ruim").length)
         setTimeout(()=> console.log('boa',qtdboa,'ruim',qtdruim),500)

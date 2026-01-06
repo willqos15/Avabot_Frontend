@@ -161,7 +161,7 @@ export default function Pchat() {
                 <div 
                 className= {!xp?  "flex flex-col justify-center align-middle gap-2 bg-white rounded-md p-5 px-2": "hidden"} >
                    
-                    <p className='text-3xl pb-5 text-center'>Como foi sua experiência com nossos serviços?</p>
+                    <p className='sm:text-3xl text-2xl pb-5 text-center'>Como foi sua experiência com nossos serviços?</p>
                     <div className='flex gap-10 justify-center'>
 
                         
@@ -185,8 +185,8 @@ export default function Pchat() {
                     x.quem === "IA" ?
 
                         <div className='bg-white text-amber-900  my-2 p-2 w-fit mr-0 text-left rounded-lg'>
-                            <p className='font-bold text-2xl'> Ana - Atendente da Pet Feliz</p>
-                            <p className='text-2xl'>
+                            <p className='font-bold sm:text-2xl text-xl'> Ana - Atendente Virtual</p>
+                            <p className='sm:text-2xl text-lg'>
                                 {x.mensagem}</p>
                         </div>
 

@@ -216,13 +216,13 @@ xl:col-span-3
 lg:col-span-3
 md:col-span-2
 sm:col-span-1
- text-white text-3xl bg-green-600 px-4 py-2 rounded-xl "
+ text-white text-3xl bg-green-600 px-4 py-2 rounded-xl"
 > 
 
 <div className="flex justify-center items-center">
    <ImHappy2 className="mx-4"/>
-   <p className="font-monoNumber"> <strong> {qtdboa===0 ? "0": ((qtdboa*100)/(qtdboa+qtdruim)).toFixed(2)}% de elogios </strong></p></div>
-    <p className="text-xl text-center"> {qtdboa} a cada {qtdboa+qtdruim} clientes satisfeitos.</p>
+   <p className="font-monoNumber text-sm sm:text-xl"> <strong> {qtdboa===0 ? "0": ((qtdboa*100)/(qtdboa+qtdruim)).toFixed(2)}% de elogios </strong></p></div>
+    <p className="sm:text-xl text-base text-center"> {qtdboa} a cada {qtdboa+qtdruim} clientes satisfeitos.</p>
 </div>}
 
 
@@ -238,8 +238,8 @@ sm:col-span-1
 
 <div className="flex justify-center items-center">
    <ImSad2 className="mx-4"/>
-   <p className="font-monoNumber"> <strong> {qtdruim===0 ? "0": ((qtdruim*100)/(qtdboa+qtdruim)).toFixed(2)}% de críticas </strong></p></div>
-    <p className="text-xl text-center"> {qtdruim} a cada {qtdboa+qtdruim} clientes insatisfeitos.</p>
+   <p className="font-monoNumber text-base sm:text-xl"> <strong> {qtdruim===0 ? "0": ((qtdruim*100)/(qtdboa+qtdruim)).toFixed(2)}% de críticas </strong></p></div>
+    <p className="text-center text-sm sm:text-xl"> {qtdruim} a cada {qtdboa+qtdruim} clientes insatisfeitos.</p>
 </div>}
 
 
@@ -254,13 +254,16 @@ sm:col-span-1
                     }>
 
                         <div className="flex items-center justify-between pt-4">
-                            <div>
-                                <p className="sm:text-md text-lg font-bold text-white sm:px-0 px-4"> {chat.chatid} </p>
+                            <div className="w-full">
+                                <p className="sm:text-lg text-base font-bold text-white px-4"> {chat.chatid} </p>
 
-                                <div className="flex gap-6 ">
-                                    <p className="sm:text-sm text-lg font-bold text-white sm:px-0 px-4">{new Date(chat.criado).toLocaleDateString("pt-BR")}    </p>
+                                <div className="flex justify-between w-full whitespace-nowrap px-4">
+                                    
+                                    <p className="sm:text-base text-base font-bold text-white">{new Date(chat.criado).toLocaleDateString("pt-BR")}    </p>
 
-                                    <p className="sm:text-sm text-lg font-bold text-white sm:px-0 px-4"> HORA: {new Date(chat.criado).toLocaleTimeString("pt-BR")}    </p>
+                                    <p className="sm:text-base text-base font-bold text-white">
+                                        Hora: {new Date(chat.criado).toLocaleTimeString("pt-BR")}
+                                    </p>
                                 </div>
 
                             </div>
@@ -289,7 +292,7 @@ sm:col-span-1
 
                                 }>
                                     <p
-                                        className="text-left text-2xl">
+                                        className="text-left sm:text-2xl text-base">
                                         <strong>
 
                                             {msg.role === "user" ? 'Cliente: ' : 'IA: '} </strong>

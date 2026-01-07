@@ -23,7 +23,7 @@ O código do **backend (Node, API, ChatBot e Banco de dados MySQL)** está dispo
 
 ![Tela do Chat](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_223034_zh6nar.png)
 
-![Painel de Elogios](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_233818_zl6juu.pngg)
+![Painel de Elogios](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_233818_zl6juu.png)
 
 ![Painel Critica](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_233836_by8618.png)
 

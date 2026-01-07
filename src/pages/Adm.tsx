@@ -274,11 +274,11 @@ sm:col-span-1
                                     setDelId(chat.id)
                                 }}
                                 className="text-red-500 
-            hover:text-red-700 sm:mx-0 mx-5
+            hover:text-red-700 sm:mx-0 mx-5 w-fit h-fit
             text-4xl items-center bg-white rounded-full"/>
                         </div>
 
-                        <div className='bg-amber-100 w-full overflow-y-auto h-96 px-3 my-5 sm:rounded-2xl rounded-none' >
+                        <div className='bg-amber-100 sm:w-full w-11/12 mx-auto overflow-y-auto h-96 px-3 my-5 sm:rounded-2xl rounded-none' >
 
 
 

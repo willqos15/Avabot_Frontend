@@ -19,13 +19,13 @@ O código do **backend (Node, API, ChatBot e Banco de dados MySQL)** está dispo
 ## Screenshots
 
 
-![Tela Inicial](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_221743_xnumdq.png)
+![Tela Inicial](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_222925_sszory.png)
 
-![Tela do Chat](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_222012_gfupr4.png)
+![Tela do Chat](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_223034_zh6nar.png)
 
-![Painel de Elogios](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_221903_vgbk19.png)
+![Painel de Elogios](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_233818_zl6juu.pngg)
 
-![Painel Critica](https://res.cloudinary.com/drklvmtqp/image/upload/v1767576109/Captura_de_tela_2026-01-04_221917_ahoq6l.png)
+![Painel Critica](https://res.cloudinary.com/drklvmtqp/image/upload/v1767753617/Captura_de_tela_2026-01-06_233836_by8618.png)
 
 ## Funcionalidades
 
@@ -39,10 +39,12 @@ O código do **backend (Node, API, ChatBot e Banco de dados MySQL)** está dispo
 - **Painel Administrativo (Adm)**
   - Visualiza todas as conversas registradas.
   - Filtra conversas por avaliação (`Elogios` ou `Críticas`).
-  - Mostra detalhes de cada conversa, incluindo ID e data.
+  - Mostra detalhes de cada conversa, incluindo ID, data e hora.
   - Deleta conversas com confirmação através de popup.
   - Indicação de carregamento enquanto os dados são carregados.
   - Navegação de volta para a página inicial.
+  - Exibe o total de elogios e críticas, com contagem e percentual.
+
 
 
 ---
